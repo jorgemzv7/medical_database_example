@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "myt-assignment"
+version = "0.1.0"
+description = ""
+authors = ["Ventura <jorgemzv7@gmail.com>"]
+readme = "README.md"
+packages = [{include = "myt_assignment"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.115.12"
+uvicorn = "^0.34.0"
+sqlalchemy = "^2.0.39"
+psycopg2-binary = "^2.9.10"
+pydantic = "^2.10.6"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.5"
+sqlalchemy2-stubs = "^0.0.2a38"
+mypy = "^1.15.0"
+pylint = "^3.3.6"
+python-dotenv = "^1.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
