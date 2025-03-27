@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from app.routes import patients
 from app.database import engine, Base
 from dotenv import load_dotenv
-import os
+
 
 load_dotenv()
 

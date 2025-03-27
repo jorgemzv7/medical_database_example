@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from typing import List
 
 from app.models.patient import Patient
-from app.schemas.patient import PatientCreate, PatientUpdate, PatientResponse
+from app.schemas import PatientCreate, PatientUpdate, PatientResponse
 from app.database import get_db
 
 router = APIRouter(
