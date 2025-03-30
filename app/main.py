@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routes import patient_leads, physicians, persons
+from app.routes import patient_leads
 from app.database import engine, Base
 from dotenv import load_dotenv
 from app.models.person import Person
@@ -21,9 +21,7 @@ app = FastAPI(
     version='1.0.0'
 )
 
-app.include_router(persons.router)
 app.include_router(patient_leads.router)
-app.include_router(physicians.router)
 
 @app.get('/')
 def root():
