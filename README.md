@@ -233,6 +233,14 @@ The migration captures both the static option_set values and dynamic lookup valu
 
 Made an API with CRUD operations for the patient model.
 
+## Decisions & Assumptions
+- Async PostgreSQL driver (asyncpg) for better performance
+- Temporal versioning for patient leads
+- Logical deletion instead of physical
+- Centralized error handling
+- Configurable DNS for container networking
+
+
 ## Deployment Production-like
 1. Create files in `secrets/` with your real credentials.
 2. Exec:
@@ -242,11 +250,21 @@ Made an API with CRUD operations for the patient model.
 
 # Considerations
 
-## Credentials
+While I currently don't have hands-on experience with Terraform, I understand its critical role in modern cloud deployments. 
+For a production-grade setup of this application, the ideal approach would involve leveraging Infrastructure-as-Code (IaC) principles to ensure reproducibility and scalability. 
 
-On a real environment, instead of using files for the env variables, would use AWS Secrets.
+Here’s how I would architect the solution conceptually:
 
-## Deployment
+1.- Cloud Provider Setup:
+    Deploy the API container to AWS Elastic Container Service (ECS) for automated scaling, and replace the PostgreSQL container with a managed cloud database (AWS RDS) for high availability and automated backups.
 
-Deploy with kubernetes
+2.- Infrastructure Definition:
+    Use Terraform to declaratively define all components – VPC networks, security groups, load balancers, and database instances – ensuring identical environments across stages.
+
+3.- Secrets Management:
+    Integrate with AWS Secrets Manager to securely inject credentials (DB_URL, and more in the future) at runtime rather than using environment variables.
+
+4.- CI/CD Pipeline:
+    Implement a GitHub Actions / GitLab CI/CD pipeline to automatically rebuild Docker images on code changes and trigger Terraform plan/apply workflows for controlled deployments.
+
 
