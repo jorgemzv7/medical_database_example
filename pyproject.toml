@@ -10,10 +10,10 @@ packages = [{include = "myt_assignment"}]
 python = "^3.11"
 fastapi = "^0.115.12"
 uvicorn = "^0.34.0"
-sqlalchemy = "^2.0.39"
-psycopg2-binary = "^2.9.10"
-pydantic = "^2.10.6"
+pydantic = "^2.0.0"
 email-validator = "^2.2.0"
+sqlalchemy = {extras = ["asyncio"], version = "^2.0.40"}
+asyncpg = "^0.30.0"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -22,6 +22,9 @@ sqlalchemy2-stubs = "^0.0.2a38"
 mypy = "^1.15.0"
 pylint = "^3.3.6"
 python-dotenv = "^1.1.0"
+alembic = "^1.15.2"
+pytest-asyncio = "^0.26.0"
+httpx = "^0.28.1"
 
 [build-system]
 requires = ["poetry-core"]
