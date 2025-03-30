@@ -26,7 +26,14 @@ alembic = "^1.15.2"
 pytest-asyncio = "^0.26.0"
 httpx = "^0.28.1"
 pytest-cov = "^6.0.0"
+fastapi = "^0.115.12"
+sqlalchemy = "^2.0.40"
+asyncpg = "^0.30.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+addopts = "--asyncio-mode=auto"
