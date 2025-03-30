@@ -7,7 +7,8 @@ services:
     ports:
       - "8000:8000"
     environment:
-      DB_URL: postgresql://postgres:pwd@db:5432/mytdb
+      PYTHONPATH: /app
+      DB_URL: postgresql+asyncpg://postgres:pwd@db:5432/mytdb
       PORT: 8000
     env_file: .env.dev
     depends_on:
