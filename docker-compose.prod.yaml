@@ -7,6 +7,16 @@ services:
       - db_url
     environment:
       - DB_URL_FILE=/run/secrets/db_url
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   db:
     image: postgres:13
@@ -14,6 +24,9 @@ services:
       - db_password
     environment:
       POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+    configs:  # Enhance with specific PostgreSQL configurations
+      - source: postgres_optimized
+        target: /etc/postgresql/postgresql.conf
 
 secrets:
   db_url:
