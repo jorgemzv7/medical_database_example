@@ -5,7 +5,7 @@ The purpose of this assessment is to redesign a given data model which tracks th
 
 The Initial E/R Diagram of the system was this one:
 
-![Old Data Model](.images/old_diagram.png)
+![Old Data Model](./images/old_diagram.png)
 
 # 1.1 Proposed New Data Model
 
@@ -140,7 +140,7 @@ Ref: "patient_leads"."id" > "contact_bookings"."patient_lead_id"
 
 ## New model diagram
 
-![New Data Model](.images/new_diagram.png)
+![New Data Model](./images/new_diagram.png)
 
 
 ## Advantages:
