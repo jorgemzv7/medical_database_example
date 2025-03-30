@@ -1,24 +1,24 @@
-version: '3.8'
-
 services:
   api:
     build: .
+    dns:  # Avoid temporary failure on name resolution on pip installs
+      - 8.8.8.8
+      - 8.8.4.4
     ports:
       - "8000:8000"
     environment:
-      - PORT=8000
-    env_file:
-      - .env.prod
-    secrets:
-      - db_url
+      DB_URL: postgresql://postgres:pwd@db:5432/mytdb
+      PORT: 8000
+    env_file: .env.dev
     depends_on:
       - db
 
   db:
     image: postgres:13
     environment:
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: mydb
+      POSTGRES_USER: postgres  # Default user with superuser privileges
+      POSTGRES_PASSWORD: pwd
+      POSTGRES_DB: mytdb
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
