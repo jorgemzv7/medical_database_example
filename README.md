@@ -242,11 +242,20 @@ Made an API with CRUD operations for the patient model.
 
 
 ## Deployment Production-like
-1. Create files in `secrets/` with your real credentials.
+1. Create files in `secrets/` with your real credentials. (Temporal solution)
 2. Exec:
    ```bash
    docker-compose -f docker-compose.prod.yml up -d
    ```
+
+
+# Testing
+
+Added some test to validate both the DB and its logic and the API endpoints
+
+```bash
+docker-compose -f docker-compose.test.yml up --build --abort-on-container-exit
+```
 
 # Considerations
 
