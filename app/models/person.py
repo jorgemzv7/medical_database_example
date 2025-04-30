@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, DateTime, Enum
+from sqlalchemy import Column, String, DateTime, Enum, func
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
 from enum import Enum as PythonEnum
@@ -18,6 +18,6 @@ class Person(Base):
     lastname = Column(String(50), nullable=False)
     email = Column(String(100), unique=True, nullable=False)
     job_title = Column(String(50))
-    created_at = Column(DateTime, nullable=False)
+    created_at = Column(DateTime, nullable=False, default=func.now())
     type = Column(Enum(PersonRole), nullable=False)
  
