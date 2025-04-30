@@ -115,7 +115,7 @@ async def read_patient_lead(
     return db_patient_lead
 
 
-@router.put('/{patient_lead_id}', response_model=PatientLeadResponse)
+@router.patch('/{patient_lead_id}', response_model=PatientLeadResponse)
 async def update_patient_lead(
     patient_lead_id: UUID,
     patient_lead: PatientLeadUpdate,
