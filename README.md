@@ -1,5 +1,4 @@
-# MyT_assignment
-MyTomorrows take home assignment
+Medical database example
 
 The purpose of this assessment is to redesign a given data model which tracks the flow of medical procedures.
 
