@@ -6,7 +6,7 @@ from sqlalchemy.exc import IntegrityError
 
 from app.models.patient_lead import PatientLead
 from app.models.person import Person, PersonRole
-from app.models.medical_condition import MedicalCondition  # Asegúrate de importar tu modelo MedicalCondition
+from app.models.medical_condition import MedicalCondition
 
 @pytest.mark.asyncio
 async def test_create_patient_lead(session: AsyncSession):
@@ -21,12 +21,11 @@ async def test_create_patient_lead(session: AsyncSession):
         type=PersonRole.PATIENT
     )
     
-    medical_condition = MedicalCondition(id=uuid4(), name='Test Condition')  # Ajusta según tu modelo
+    medical_condition = MedicalCondition(id=uuid4(), name='Test Condition')
     
     session.add_all([person, medical_condition])
     await session.commit()
     
-    # Ahora creamos el PatientLead con las IDs existentes
     lead = PatientLead(
         person_id=person.id,
         medical_condition_id=medical_condition.id,

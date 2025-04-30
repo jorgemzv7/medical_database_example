@@ -251,6 +251,7 @@ Made an API with CRUD operations for the patient model.
 
 # Testing
 
+*** TODO: Tests are a first version AI generated and do not cover all use cases. They must be completed
 Added some test to validate both the DB and its logic and the API endpoints
 
 ```bash
